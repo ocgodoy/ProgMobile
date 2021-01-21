@@ -45,4 +45,11 @@
         android:textColor="@android:color/white"
         android:onClick="sendFeedBack"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Go Back to Research"
+        android:onClick="goBackToResearch"/>
+
 </LinearLayout>

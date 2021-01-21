@@ -2,6 +2,7 @@ package com.example.webrater;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,5 +50,10 @@ public class Rating extends AppCompatActivity {
     public void sendFeedBack(View view) {
         Toast toast = Toast.makeText(Rating.this, "Thank you for sharing your feedback", Toast.LENGTH_SHORT);
         toast.show();
+    }
+
+    public void goBackToResearch(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
