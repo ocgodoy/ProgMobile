@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import android.provider.ContactsContract;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,11 +14,6 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             Bundle bundle = new Bundle();
             bundle.putInt("some_int", 0);
-
-            getSupportFragmentManager().beginTransaction()
-                    .setReorderingAllowed(true)
-                    .add(R.id.fragment_container_view, ContactsFragment.class, null)
-                    .commit();
         }
     }
 }
