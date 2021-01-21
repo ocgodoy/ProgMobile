@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,8 +32,14 @@ public class MainActivity extends AppCompatActivity {
         isSearching = true;
         TextView searchBar = (TextView) findViewById(R.id.url);
         String url = searchBar.getText().toString();
-        Uri page = Uri.parse(url);
-        Intent intent = new Intent(Intent.ACTION_VIEW, page);
-        startActivity(intent);
+        if(url.isEmpty()){
+            Toast toast = Toast.makeText(this, "Please fill in the address text box", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else {
+            Uri page = Uri.parse(url);
+            Intent intent = new Intent(Intent.ACTION_VIEW, page);
+            startActivity(intent);
+        }
     }
 }

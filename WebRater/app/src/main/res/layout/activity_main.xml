@@ -14,23 +14,23 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please enter the URL you want to browse : ">
-        </TextView>
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:text="Please enter the URL you want to browse : "/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/url"
-            android:hint="example@domain.com">
-        </EditText>
+            android:hint="example@domain.com"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Search"
-            android:onClick="search">
-
-        </Button>
+            android:onClick="search"/>
     </LinearLayout>
 
 </LinearLayout>
