@@ -13,10 +13,14 @@ import android.widget.Toast;
 
 public class Rating extends AppCompatActivity {
 
+    DataBaseHelper websiteDB;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
+
+        websiteDB = new DataBaseHelper(this);
 
         RatingBar mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
         TextView mRatingScale = (TextView) findViewById(R.id.textRatingScale);
