@@ -15,14 +15,22 @@ public class Rating extends AppCompatActivity {
 
     DataBaseHelper websiteDB;
 
+    RatingBar mRatingBar;
+
+    String url;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
 
+        Intent intent = getIntent();
+        url = intent.getStringExtra("URL");
+        System.out.print("The searched url is " + url);
+        // open database
         websiteDB = new DataBaseHelper(this);
 
-        RatingBar mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
+        mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
         TextView mRatingScale = (TextView) findViewById(R.id.textRatingScale);
 
         mRatingBar.setOnRatingBarChangeListener(
@@ -52,12 +60,17 @@ public class Rating extends AppCompatActivity {
     }
 
     public void sendFeedBack(View view) {
-        Toast toast = Toast.makeText(Rating.this, "Thank you for sharing your feedback", Toast.LENGTH_SHORT);
+        websiteDB.insertData(url, (int) mRatingBar.getRating());
+        Toast toast = Toast.makeText(Rating.this, "Thank you for sharing your feedback", Toast.LENGTH_LONG);
         toast.show();
     }
 
     public void goBackToResearch(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        websiteDB.close();
+        finish();
+        /**Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivityIfNeeded(intent, 0);
+         */
     }
 }
