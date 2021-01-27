@@ -11,7 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Rating extends AppCompatActivity {
+public class Rating extends MainActivity {
 
     DataBaseHelper websiteDB;
 
@@ -24,11 +24,10 @@ public class Rating extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating);
 
+        websiteDB = getWebsiteDB();
+
         Intent intent = getIntent();
         url = intent.getStringExtra("URL");
-        System.out.print("The searched url is " + url);
-        // open database
-        websiteDB = new DataBaseHelper(this);
 
         mRatingBar = (RatingBar) findViewById(R.id.ratingBar);
         TextView mRatingScale = (TextView) findViewById(R.id.textRatingScale);
