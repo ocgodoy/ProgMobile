@@ -39,7 +39,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String url, int rating){
-        System.out.print("trying to insert url " + url);
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, url);
@@ -58,6 +57,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3, rating);
         db.update(TABLE_NAME, contentValues, "URL = ?", new String[] {url});
         return true;
+    }
+
+    public Cursor getURL(String url){
+        System.out.println("getting url from db \n");
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select URL, RATING from "+TABLE_NAME+" where URL = ?", new String[] {url});
+        return res;
     }
 
     public Cursor getAllData(){

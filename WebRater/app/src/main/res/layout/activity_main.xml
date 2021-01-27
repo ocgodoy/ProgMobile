@@ -23,4 +23,9 @@
             android:text="Let's start !"
             android:onClick="start"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go to my ratings"/>
+
 </LinearLayout>
