@@ -8,48 +8,31 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-        <ViewFlipper
-            android:id="@+id/viewFlipper"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_horizontal"
-                    android:text="Welcome to Web Rater"
-                    android:textSize="20sp"
-                    android:textStyle="italic"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Welcome to Web Rater"
+            android:textSize="20sp"
+            android:textStyle="italic" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Let's start !"
-                    android:onClick="start"/>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Go to my ratings"
-                    android:onClick="viewRatings"/>
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0"
+            android:onClick="start"
+            android:text="Let's start !" />
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/listView"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="0"
+            android:onClick="viewRatings"
+            android:text="My ratings" />
 
-        </LinearLayout>
-
-        </ViewFlipper>
 </LinearLayout>
 

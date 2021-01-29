@@ -74,9 +74,12 @@ public class Rating extends MainActivity {
     public void goBackToResearch(View view){
         websiteDB.close();
         finish();
-        /**Intent intent = new Intent(this, MainActivity.class);
+    }
+
+    public void goBackToHome(View view){
+        websiteDB.close();
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivityIfNeeded(intent, 0);
-         */
     }
 }

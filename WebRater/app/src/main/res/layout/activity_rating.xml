@@ -11,9 +11,11 @@
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="Did you like it ?"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="How was it ?"
         android:textSize="20sp"
         android:textStyle="italic" />
 
@@ -21,16 +23,20 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
         android:numStars="5"
+        android:rating="5"
         android:stepSize="1"
-        android:rating="5" />
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/textRatingScale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="2"
         android:text="Awesome. I love it"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -40,16 +46,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:layout_weight="0"
+        android:onClick="sendFeedBack"
         android:text="Send feedback"
-        android:textColor="@android:color/white"
-        android:onClick="sendFeedBack"/>
+        android:textColor="@android:color/white" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:text="Go Back to Research"
-        android:onClick="goBackToResearch"/>
+        android:layout_weight="0"
+        android:onClick="goBackToResearch"
+        android:text="Go Back to Research" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_weight="0"
+        android:onClick="goBackToHome"
+        android:text="Home" />
 
 </LinearLayout>
