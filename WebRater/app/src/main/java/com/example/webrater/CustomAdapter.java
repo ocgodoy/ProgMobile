@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,7 +45,8 @@ public class CustomAdapter extends BaseAdapter {
 
             holder = new ViewHolder();
             holder.url = (TextView)convertView.findViewById(R.id.url);
-            holder.rating = (TextView)convertView.findViewById(R.id.rating);
+            //holder.rating = (TextView)convertView.findViewById(R.id.rating);
+            holder.stars = (RatingBar)convertView.findViewById(R.id.stars);
 
             convertView.setTag(holder);
         }
@@ -54,13 +56,15 @@ public class CustomAdapter extends BaseAdapter {
 
         Website stu = websitesList.get(position);
         holder.url.setText(stu.getUrl());
-        holder.rating.setText(String.valueOf(stu.getRating()));
+        //holder.rating.setText(String.valueOf(stu.getRating()));
+        holder.stars.setRating(stu.getRating());
 
         return convertView;
     }
 
     private static class ViewHolder{
         public TextView url;
-        public TextView rating;
+        //public TextView rating;
+        public RatingBar stars;
     }
 }
