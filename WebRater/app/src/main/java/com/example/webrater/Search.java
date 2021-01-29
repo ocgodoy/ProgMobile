@@ -72,8 +72,8 @@ public class Search extends MainActivity {
     }
 
     private boolean isRated(String url){
-        Cursor cursor = websiteDB.getURL(url);
-        if(cursor==null){
+        Cursor cursor = websiteDB.getByURL(url);
+        if(cursor.getCount()==0){
             return false;
         } else {
             cursor.moveToFirst();

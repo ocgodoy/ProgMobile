@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 /**
  * Created by zemmari on 14/11/16.
  */
@@ -21,7 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private final static String COL_2 ="URL";
     private final static String COL_3 ="RATING";
 
-    private static DataBaseHelper sInstance;
+    public ArrayList<Website> allWebsites;
 
     public DataBaseHelper (Context context) {
         super(context, DATABASE_NAME, null, VERSION_DB);
@@ -59,17 +61,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public Cursor getURL(String url){
-        System.out.println("getting url from db \n");
+    public Cursor getByURL(String url){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select URL, RATING from "+TABLE_NAME+" where URL = ?", new String[] {url});
         return res;
     }
 
-    public Cursor getAllData(){
+    public int getAllData(){
+        allWebsites = new ArrayList<Website>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+TABLE_NAME, null);
-        return res;
+        if(res.getCount()==0){
+            return -1;
+        }
+        while(res.moveToNext()){
+            Website website = new Website(res.getString(1), res.getInt(2));
+            allWebsites.add(website);
+        }
+        return 0;
     }
 
 
